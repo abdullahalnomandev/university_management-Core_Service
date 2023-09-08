@@ -8,7 +8,13 @@ import { IStudentFilterRequest } from './student.interface';
 
 
 const insertIntoDB = async (data: Student): Promise<Student> => {
-  return await prisma.student.create({ data });
+  return await prisma.student.create({ data,
+ include:{
+    academicSemester:true,
+    academicFaculty:true,
+    acadeicDepartment:true
+  }
+  },);
 };
 
 const getAllFromDB = async (
@@ -19,7 +25,6 @@ const getAllFromDB = async (
   const { searchTerm, ...filterData } = filters;
   const { page, limit, skip ,sortOrder,sortBy } = paginationHelpers.calculatePagination(options);
 
-   console.log('options', options);
   const andConditions = [];
 
   if (searchTerm) {
@@ -52,6 +57,11 @@ const getAllFromDB = async (
     orderBy: sortBy && sortOrder ?  {
       [sortBy]: sortOrder
     }:{createdAt:'asc'},
+    include:{
+      acadeicDepartment:true,
+      academicFaculty:true,
+      academicSemester:true
+    }
   });
 
   const total = await prisma.student.count();

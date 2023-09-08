@@ -13,4 +13,4 @@ router.post(
 router.get('/', StudentController.getAllFromDB);
 router.get('/:id', StudentController.getDataById);
 
-export const AcademicSemesterRoutes = router;
+export const StudentRoutes = router;
