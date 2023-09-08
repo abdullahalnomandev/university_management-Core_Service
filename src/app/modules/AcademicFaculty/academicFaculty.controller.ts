@@ -20,11 +20,9 @@ const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
 
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
 
-   
    const filters = pick(req.query,AcademicFacultyFilterAbleFields);
    const options = pick (req.query,['limit','page','sortBy','sortOrder'])
-
-
+   
   const result = await AcademicFacultyService.getAllFromDB(filters, options);
   sendResponse(res, {
     statusCode: httpStatus.OK,
