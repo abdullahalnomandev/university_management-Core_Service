@@ -94,6 +94,16 @@
             "date": 1694210410189,
             "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-09-09-04-success.log",
             "hash": "bee71cb1d588abdd182289cc7cf179f8a76be745a6678ce50658b78223033b0f"
+        },
+        {
+            "date": 1694221796335,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-09-09-07-success.log",
+            "hash": "ae28697cd8c62833ec0fbe67ad5f6fb532d5f4ca4226c6998d323830c49d1de1"
+        },
+        {
+            "date": 1694305476927,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-10-09-06-success.log",
+            "hash": "b2e96d7bb34be172fa564f6700ffbbaba954266a04dc01900de191491c1c595c"
         }
     ],
     "hashType": "sha256"
