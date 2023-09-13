@@ -114,6 +114,36 @@
             "date": 1694311333698,
             "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-10-09-08-success.log",
             "hash": "2a24b417ab7e20f7380c85ff031bde64c97227432eb21b10c07c2d9c2bb6383e"
+        },
+        {
+            "date": 1694361014631,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-10-09-21-success.log",
+            "hash": "f2a3ac75ebd1fb3c6f8c7465f1064093ad69d28dec34f1eef5a8b24683594867"
+        },
+        {
+            "date": 1694409430141,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-11-09-11-success.log",
+            "hash": "b14cd7c4728d34e687a2772fab95c81fa76e8772002e108ef6b69c22fedf1028"
+        },
+        {
+            "date": 1694449159526,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-11-09-22-success.log",
+            "hash": "d9260d98a304ec1eb93e615da21bcf9fadfa65357740aaedecdf43f16c147d69"
+        },
+        {
+            "date": 1694451678322,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-11-09-23-success.log",
+            "hash": "bbb5c050e16632bc99c593be82954efac97185cb2f38d4d38e36ea998e989f59"
+        },
+        {
+            "date": 1694477731465,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-12-09-06-success.log",
+            "hash": "bdbd6526100f16e027ece3ed225969847c12c2c4ba34b065b87582e4fc7f8f47"
+        },
+        {
+            "date": 1694480410097,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-12-09-07-success.log",
+            "hash": "2d0e302d1cba24fd9a769aaf3c70f40fa1ee25cb833d1438b33bc3ddb71cc0b1"
         }
     ],
     "hashType": "sha256"
