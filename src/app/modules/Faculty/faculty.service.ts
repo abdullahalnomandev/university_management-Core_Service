@@ -1,4 +1,4 @@
-import { Faculty, Prisma } from '@prisma/client';
+import { CourseFaculty, Faculty, Prisma } from '@prisma/client';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
@@ -62,6 +62,11 @@ const getAllFromDB = async (
     include: {
       academicDepartment: true,
       acadeimcFaculty: true,
+      courses: {
+        include:{
+          course:true
+        }
+      },
     },
   });
 
@@ -81,8 +86,61 @@ const getDataById = async (id: string): Promise<Faculty | null> => {
   return await prisma.faculty.findUnique({ where: { id } });
 };
 
+
+const assignCourses= async (
+  id: string,
+  payload: string[]
+): Promise<CourseFaculty[]> => {
+  console.log("ok"<id, payload);
+  await prisma.courseFaculty.createMany({
+    data: payload.map(courseId => ({
+      facultyId: id,
+      courseId: courseId,
+    })),
+  });
+
+  const assignCoursesData = await prisma.courseFaculty.findMany({
+    where: {
+      facultyId: id,
+    },
+    include:{
+      course:true
+    }
+  });
+
+  return assignCoursesData;
+};
+
+const removeCourses= async (
+  id: string,
+  payload: string[]
+): Promise<CourseFaculty[] | null> => {
+  await prisma.courseFaculty.deleteMany({
+    where: {
+      facultyId: id,
+      courseId: {
+        in: payload,
+      },
+    },
+  });
+
+  const assignFacultiesData = await prisma.courseFaculty.findMany({
+    where: {
+      facultyId: id,
+    },
+    include: {
+      course: true,
+    },
+  });
+
+  return assignFacultiesData;
+};
+
+
 export const FacultyService = {
   insertIntoDB,
   getAllFromDB,
   getDataById,
+  assignCourses,
+  removeCourses
 };

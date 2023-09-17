@@ -152,6 +152,11 @@ const getById = async (id: string): Promise<Course | null> => {
           courses: true,
         },
       },
+      faculties:{
+        include:{
+          faculty: true
+        }
+      }
     },
   });
   return responseData;

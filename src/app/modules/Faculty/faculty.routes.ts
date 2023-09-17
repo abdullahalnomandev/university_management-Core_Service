@@ -12,5 +12,7 @@ router.post(
 );
 router.get('/', FacultyController.getAllFromDB);
 router.get('/:id', FacultyController.getDataById);
+router.post('/:id/assign-courses', FacultyController.assignCourses);
+router.delete('/:id/remove-courses',FacultyController.removeCourses);
 
 export const FacultyRoutes = router;
