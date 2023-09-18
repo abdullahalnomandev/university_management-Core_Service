@@ -2,7 +2,7 @@ import { Response } from 'express';
 
 type IApiResponse<T> = {
   statusCode: number;
-  status: string;
+  status: 'success' | 'fail';
   message?: string | null;
   meta?: {
     page: number;
