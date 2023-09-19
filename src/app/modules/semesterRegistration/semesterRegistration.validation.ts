@@ -21,23 +21,19 @@ const create = z.object({
   }),
 });
 
+
 const update = z.object({
   body: z.object({
     startDate: z.string().optional(),
     endDate: z.string().optional(),
     academicSemesterId: z.string().optional(),
-    status: z
-      .enum(
-        [...Object.values(SemesterRegistrationStatus)] as [string, ...string[]],
-        {}
-      )
-      .optional(),
     minCredit: z.number().optional(),
     maxCredit: z.number().optional(),
+    status: z.enum([...Object.values(SemesterRegistrationStatus)] as [string,...string[]],{}).optional(),
   }),
 });
 
 export const SemesterRegistrationValidation = {
   create,
-  update,
+  update
 };
