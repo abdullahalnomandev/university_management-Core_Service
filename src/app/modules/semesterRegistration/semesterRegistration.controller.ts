@@ -59,10 +59,22 @@ const deleteByIdFromDB = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const updateOneInDB = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await SemesterRegistrationService.updateOneInDB(id,req.body);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    status:"success",
+    message: 'SemesterRegistration deleted successfully',
+    data: result,
+  });
+});
+
 
 export const SemesterRegistrationController = {
   insertIntoDb,
   getSingleFromDb,
   getAllFromDB,
-  deleteByIdFromDB
+  deleteByIdFromDB,
+  updateOneInDB
 };

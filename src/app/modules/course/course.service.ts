@@ -184,7 +184,6 @@ const assignFaculties = async (
   payload:string[]
 ):Promise <CourseFaculty[]> => {
 
-  console.log(id,payload);
   await prisma.courseFaculty.createMany({
     data: payload.map(facultyId => ({
       courseId: id,

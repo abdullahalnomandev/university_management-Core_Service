@@ -10,5 +10,6 @@ router.post('/',validateRequest(SemesterRegistrationValidation.create), Semester
 router.get('/',SemesterRegistrationController.getAllFromDB)
 router.get('/:id',SemesterRegistrationController.getSingleFromDb)
 router.delete('/:id',SemesterRegistrationController.deleteByIdFromDB)
+router.patch('/:id',SemesterRegistrationController.updateOneInDB)
 
 export const semesterRegistrationRoutes = router;
