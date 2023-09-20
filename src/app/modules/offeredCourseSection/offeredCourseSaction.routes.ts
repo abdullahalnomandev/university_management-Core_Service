@@ -4,5 +4,8 @@ import { OfferedCourseSectionController } from './offeredCourseSaction.controlle
 const router = express.Router();
 
 router.post('/', OfferedCourseSectionController.insertIntoDb)
+router.get('/:id', OfferedCourseSectionController.getSingleOne)
+router.get('/', OfferedCourseSectionController.getAllFromDb)
+router.delete('/:id', OfferedCourseSectionController.deleteFromDb)
 
 export const OfferedCourseSectionRoutes = router;
