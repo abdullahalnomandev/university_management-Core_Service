@@ -95,9 +95,10 @@ model Faculty {
   academicDepartmentId String
   academicDepartment   AcademicDepartment @relation(fields: [academicDepartmentId], references: [id])
 
-  academicFacultyId String
-  acadeimcFaculty   AcademicFaculty @relation(fields: [academicFacultyId], references: [id])
-  courses           CourseFaculty[]
+  academicFacultyId          String
+  acadeimcFaculty            AcademicFaculty              @relation(fields: [academicFacultyId], references: [id])
+  courses                    CourseFaculty[]
+  offeredCourseClassSchedules OfferedCourseClassSchedule[]
 
   @@map("faculties")
 }
@@ -120,8 +121,9 @@ model Room {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
 
-  buildingId String
-  building   Building @relation(fields: [buildingId], references: [id])
+  buildingId                  String
+  building                    Building                     @relation(fields: [buildingId], references: [id])
+  offeredCourseClassSchedules OfferedCourseClassSchedule[]
 
   @@map("rooms")
 }
@@ -163,18 +165,19 @@ model CourseFaculty {
 }
 
 model SemesterRegistration {
-  id                   String                      @id @default(uuid())
-  startDate            DateTime
-  endDate              DateTime
-  status               SemesterRegistrationStatus? @default(UPCOMEING)
-  minCredit            Int                         @default(0)
-  maxCredit            Int                         @default(0)
-  createdAt            DateTime                    @default(now())
-  updatedAt            DateTime                    @default(now())
-  academicSemesterId   String
-  academicSemester     AcademicSemester            @relation(fields: [academicSemesterId], references: [id])
-  offeredCourses       OfferedCourse[]
-  offeredCourseSections OfferedCourseSection[]
+  id                          String                       @id @default(uuid())
+  startDate                   DateTime
+  endDate                     DateTime
+  status                      SemesterRegistrationStatus?  @default(UPCOMEING)
+  minCredit                   Int                          @default(0)
+  maxCredit                   Int                          @default(0)
+  createdAt                   DateTime                     @default(now())
+  updatedAt                   DateTime                     @default(now())
+  academicSemesterId          String
+  academicSemester            AcademicSemester             @relation(fields: [academicSemesterId], references: [id])
+  offeredCourses              OfferedCourse[]
+  offeredCourseSections       OfferedCourseSection[]
+  offeredCourseClassSchedules OfferedCourseClassSchedule[]
 
   @@map("semester_registrations")
 }
@@ -208,12 +211,44 @@ model OfferedCourseSection {
   offeredCourseId String
   offeredCourse   OfferedCourse @relation(fields: [offeredCourseId], references: [id])
 
-  semesterRegistrationId String
-  semesterRegistration   SemesterRegistration @relation(fields: [semesterRegistrationId], references: [id])
+  semesterRegistrationId      String
+  semesterRegistration        SemesterRegistration         @relation(fields: [semesterRegistrationId], references: [id])
+  offeredCourseClassSchedules OfferedCourseClassSchedule[]
+}
+
+model OfferedCourseClassSchedule {
+  id        String   @id @default(uuid())
+  startTime String
+  endTime   String
+  dayOfWeek WeekDays @default(STURDAY)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  offeredCourseSectionId String
+  offeredCourseSection   OfferedCourseSection @relation(fields: [offeredCourseSectionId], references: [id])
+
+  semesterRegistrationid String
+  semesterRegistration   SemesterRegistration @relation(fields: [semesterRegistrationid], references: [id])
+
+  roomId String
+  room   Room   @relation(fields: [roomId], references: [id])
+
+  facultyId String
+  facylty   Faculty @relation(fields: [facultyId], references: [id])
 }
 
 enum SemesterRegistrationStatus {
   UPCOMEING
   ONGOING
   ENDED
+}
+
+enum WeekDays {
+  STURDAY
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
 }
