@@ -1,5 +1,4 @@
 export const OfferedCourseClassScheduleSearchableFields = ['dayOfWeek'];
-
 export const offeredCourseClassScheduleRelationalFields = [
   'offeredCourseSectionId',
   'semesterRegistrationid',
@@ -15,3 +14,11 @@ export const offeredCourseClassScheduleRelationalFieldsMapper:{[key:string]:stri
 
 }
 
+export const offeredCourseClassScheduleFilterableFields = [
+    'searchTerm',
+    'dayOfWeek',
+    'offeredCourseSectionId',
+    'semesterRegistrationId',
+    'roomId',
+    'facultyId'
+]

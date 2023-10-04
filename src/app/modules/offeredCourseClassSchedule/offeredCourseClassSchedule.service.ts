@@ -33,7 +33,7 @@ const getAllFromDB = async (
   options: IPaginationOptions
 ): Promise<IGenericResponse<OfferedCourseClassSchedule[]>> => {
   const { searchTerm, ...filterData } = filters;
-  const { page, limit, skip } =  paginationHelpers.calculatePagination(options);
+  const { page, limit, skip } = paginationHelpers.calculatePagination(options);
 
   const andConditions = [];
 
@@ -68,16 +68,15 @@ const getAllFromDB = async (
     });
   }
 
-
-
-  const whereConditions: Prisma.OfferedCourseClassScheduleWhereInput = andConditions.length > 0 ? { AND: andConditions } : {};
+  const whereConditions: Prisma.OfferedCourseClassScheduleWhereInput =
+    andConditions.length > 0 ? { AND: andConditions } : {};
 
   const result = await prisma.offeredCourseClassSchedule.findMany({
     include: {
       facylty: true,
       semesterRegistration: true,
       room: true,
-      offeredCourseSection: true
+      offeredCourseSection: true,
     },
     where: whereConditions,
     skip,
