@@ -32,9 +32,6 @@ export const hasTimeConflict = (
     const newStart = new Date(`1970-01-01T${newSlot.startTime}:00`);
     const newEnd = new Date(`1970-01-01T${newSlot.endTime}:00`);
 
-    console.log('existing start time', existingStart);
-    console.log('existing start time', existingEnd);
-
     if (newStart < existingEnd && newEnd > existingStart) {
         return true
     }

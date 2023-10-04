@@ -98,7 +98,7 @@ const deleteFromDB = async (id:string):Promise <Student> =>{
     include:{
       acadeicDepartment:true,
       academicSemester:true,
-      academicFaculty:true
+      academicFaculty:true,
     }
   })
   return result;
