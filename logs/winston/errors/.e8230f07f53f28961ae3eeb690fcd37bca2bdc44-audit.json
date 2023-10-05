@@ -6,16 +6,6 @@
     "auditLog": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\.e8230f07f53f28961ae3eeb690fcd37bca2bdc44-audit.json",
     "files": [
         {
-            "date": 1695221550275,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-20-09-20-error.log",
-            "hash": "09e29fabff0f7d984cc997f1a3958ad80bbd0dcb5c00fc58b970812e8affbb31"
-        },
-        {
-            "date": 1695222029675,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-20-09-21-error.log",
-            "hash": "3dd82fb9a1251ba5d99bbc2cb063bf403b42d1537d51fa6029b9e0595cbdfa59"
-        },
-        {
             "date": 1695421813587,
             "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-23-09-04-error.log",
             "hash": "1520e1633db7affa40c3329c5b9a14c92d3910f973397856653647744cf88df3"
@@ -49,6 +39,16 @@
             "date": 1696414095705,
             "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-04-10-16-error.log",
             "hash": "4b337fe91c923af63aa5e9f6f643e2d84e8db5732da406ee56704fac8106cfe0"
+        },
+        {
+            "date": 1696441679597,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-04-10-23-error.log",
+            "hash": "9afd023e264fddec4c1ba4ccf482dc8f4bf1628f257935ed23660060133596a7"
+        },
+        {
+            "date": 1696442505359,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-05-10-00-error.log",
+            "hash": "f06096873800652ce1f2943363861325d789dda34971a9aff7da7e80b247ed95"
         }
     ],
     "hashType": "sha256"
