@@ -165,11 +165,54 @@ const updateOneInDB = async (id: string,payload:Partial<SemesterRegistration>):P
   return result;
 }
 
+const startMyRegistration = async (authUserId:string) => {
+
+
+  const studentInfo = await prisma.student.findFirst({
+    where:{
+      studentId:authUserId
+    }
+  })
+  if(!studentInfo){
+    throw new ApiError(httpStatus.BAD_GATEWAY,"Student Info not found")
+  }
+
+  const semesterRegistrationInfo = await prisma.semesterRegistration.findFirst({
+    where:{
+      status:{
+        in:[SemesterRegistrationStatus.ONGOING, SemesterRegistrationStatus.UPCOMEING]
+      }
+    }
+  })
+
+  if(semesterRegistrationInfo?.status === SemesterRegistrationStatus.UPCOMEING){
+    throw new ApiError (httpStatus.BAD_REQUEST,"Registration is not started yet")
+  }
+
+  const studentRegistration = await prisma.studentSemesterRegistration.create({
+    data:{
+      student:{
+        connect:{
+          id:studentInfo?.id
+        }
+      },
+      semesterRegistration:{
+        connect:{
+          id:semesterRegistrationInfo?.id
+        }
+      }
+    }
+  })
+
+  return studentRegistration
+}
+
 
 export const SemesterRegistrationService = {
   insertIntoDb,
   getSingleFromDb,
   getAllFromDB,
   deleteByIdFromDB,
-  updateOneInDB
+  updateOneInDB,
+  startMyRegistration
 };
