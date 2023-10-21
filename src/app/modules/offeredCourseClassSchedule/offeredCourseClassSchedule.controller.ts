@@ -18,7 +18,7 @@ const insertIntoDb = catchAsync(async (req: Request, res: Response) => {
 });
 
 
-const getFromDb = catchAsync(async (req: Request, res: Response) => {
+const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query,offeredCourseClassScheduleFilterableFields);
   const options = pick (req.query,['limit','page','sortBy','sortOrder'])
   const result = await OfferedCourseClassScheduleService.getAllFromDB(filters,options);
@@ -31,7 +31,8 @@ const getFromDb = catchAsync(async (req: Request, res: Response) => {
 });
 
 
+
 export const OfferedCourseClassScheduleController = {
   insertIntoDb,
-  getFromDb
+  getAllFromDB
 };
