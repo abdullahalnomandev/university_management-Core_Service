@@ -6,59 +6,19 @@
     "auditLog": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\.e8230f07f53f28961ae3eeb690fcd37bca2bdc44-audit.json",
     "files": [
         {
-            "date": 1696644628096,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-07-10-08-error.log",
-            "hash": "1f908ab17302971509515675b95af49d46fb098105712d9aff4f5d5aff28e7fe"
+            "date": 1700827082933,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-24-11-17-error.log",
+            "hash": "075a3189fca04faf0a31a38da2e1964298bb749e220c8840796fd021dcb379ba"
         },
         {
-            "date": 1696717631558,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-08-10-04-error.log",
-            "hash": "e3a74faf8cc4fc1350998f0a9295b83af860fc2188a93945e299f9c589f59bc7"
+            "date": 1701050006023,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-27-11-07-error.log",
+            "hash": "2b7fcb49ae62c7afc998327dc48f4c3b3d4a3862d9c8401e3e2d683265e53003"
         },
         {
-            "date": 1696719809033,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-08-10-05-error.log",
-            "hash": "c738c92e891ff259f7829d65ec418be6a4807f7d5b6b3102191785d81358ab61"
-        },
-        {
-            "date": 1696755552012,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-08-10-14-error.log",
-            "hash": "18092109f78aff0cc3f62bc302a599dc2cec4e58da7e418676288bddd9a381fa"
-        },
-        {
-            "date": 1696755794049,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-08-10-15-error.log",
-            "hash": "04e97e55ce7fbfee020f78e1b96d6f090a161ac787f18742c28844b899d3153e"
-        },
-        {
-            "date": 1697795371282,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-20-10-15-error.log",
-            "hash": "bc41afc719439f5d63b88d8136ebbb87ff41cc26214043d01c448e8cf3211585"
-        },
-        {
-            "date": 1697799031212,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-20-10-16-error.log",
-            "hash": "389bd2d77acf0cb099f878767a6e29bc9ef3a0070e1890bbd17509fc944b2954"
-        },
-        {
-            "date": 1697820680612,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-20-10-22-error.log",
-            "hash": "ec19299307c9fe23afab8113d1ac03ce00bffb4037fc7b8ce38d71c949dd57cd"
-        },
-        {
-            "date": 1697821522022,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-20-10-23-error.log",
-            "hash": "3d5a1b8d382ce3c07ef604df3ed07a6c32a52ce847415dddf408e7f425cf310f"
-        },
-        {
-            "date": 1697849788218,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-21-10-06-error.log",
-            "hash": "35f5bddf845ab10376ca9345fed432c7c6a7e22972b37acab5585f6f631a85eb"
-        },
-        {
-            "date": 1697850319113,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-21-10-07-error.log",
-            "hash": "c05f5e1ed0c91f934171b17655206e9f873feec19db590d1e1036522a1d3f879"
+            "date": 1701050424126,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-27-11-08-error.log",
+            "hash": "2b859ffabd998e0c54517c8f04d166e8184026da96100b1b491bb886f11d322f"
         }
     ],
     "hashType": "sha256"
