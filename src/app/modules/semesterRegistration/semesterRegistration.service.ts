@@ -15,7 +15,10 @@ import {
   semesterRegistrationRelationalFieldsMapper,
   semesterRegistrationSearchableFields,
 } from './semesterRegistration.constant';
-import { ISemesterRegistrationFilterRequest } from './semesterRegistration.interface';
+import {
+  IEnrollCoursePayload,
+  ISemesterRegistrationFilterRequest,
+} from './semesterRegistration.interface';
 
 const insertIntoDb = async (
   data: SemesterRegistration
@@ -189,10 +192,13 @@ const updateOneInDB = async (
 
 const startMyRegistration = async (
   authUserId: string
-): Promise<{
-  semesterRegistration: SemesterRegistration,
-  studentSemesterRegistration: StudentSemesterRegistration
-} | any> => {
+): Promise<
+  | {
+      semesterRegistration: SemesterRegistration;
+      studentSemesterRegistration: StudentSemesterRegistration;
+    }
+  | any
+> => {
   const studentInfo = await prisma.student.findFirst({
     where: {
       studentId: authUserId,
@@ -249,11 +255,112 @@ const startMyRegistration = async (
   }
 
   return {
-    semesterRegistration: semesterRegistrationInfo ,
-    studentSemesterRegistration:studentRegistration
+    semesterRegistration: semesterRegistrationInfo,
+    studentSemesterRegistration: studentRegistration,
   };
 };
 
+const enrollIntoCourse = async (
+  authUserId: string,
+  payload: IEnrollCoursePayload
+) => {
+  console.log(authUserId, payload);
+  const student = await prisma.student.findFirst({
+    where: {
+      studentId: authUserId,
+    },
+  });
+
+  console.log('student', student);
+
+  const semesterRegistration = await prisma.semesterRegistration.findFirst({
+    where: {
+      status: SemesterRegistrationStatus.ONGOING,
+    },
+  });
+
+  console.log('object', semesterRegistration);
+
+  const offeredCourse = await prisma.offeredCourse.findFirst({
+    where: {
+      id: payload.offerCourseId,
+    },
+    include:{
+      course:true
+    }
+  });
+
+  const offeredCourseSection = await prisma.offeredCourseSection.findFirst({
+    where: {
+      id: payload.offerCourseSectionId,
+    },
+  });
+
+  if (!offeredCourse) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Offer Course not found');
+  }
+  if (!offeredCourseSection) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Offer Course section not found');
+  }
+  if (!student) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Student not found');
+  }
+
+  if (!semesterRegistration) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Semester Registration not found');
+  }
+
+  if (
+    offeredCourseSection.maxCapacity &&
+    offeredCourseSection.currentlyEnrolledStudent &&
+    offeredCourseSection.currentlyEnrolledStudent >= offeredCourseSection.maxCapacity
+  ) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Student capacity is full.');
+
+  }
+
+  await prisma.$transaction(async transactionClient => {
+    await transactionClient.studentSemesterRegistrationCourse.create({
+      data: {
+        studentId: student?.id,
+        semesterRegistrationId: semesterRegistration?.id,
+        offerCourseId: payload.offerCourseId,
+        offerCourseSectionId: payload.offerCourseSectionId,
+      },
+    });
+
+    await transactionClient.offeredCourseSection.update({
+      where: {
+        id: payload.offerCourseSectionId,
+      },
+      data: {
+        currentlyEnrolledStudent: {
+          increment: 1,
+        },
+      },
+    });
+
+    await transactionClient.studentSemesterRegistration.updateMany({
+      where:{
+        student:{
+          id:student.id
+        },
+        semesterRegistration:{
+          id:semesterRegistration.id
+        }
+      },
+      data:{
+        totalCreditsToken:{
+          increment:offeredCourse.course.credits
+        }
+      }
+    })
+  });
+
+  return {
+    message:"Successfully enrolled into course"
+  };
+};
 export const SemesterRegistrationService = {
   insertIntoDb,
   getSingleFromDb,
@@ -261,4 +368,5 @@ export const SemesterRegistrationService = {
   deleteByIdFromDB,
   updateOneInDB,
   startMyRegistration,
+  enrollIntoCourse,
 };
