@@ -6,29 +6,14 @@
     "auditLog": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\.e8230f07f53f28961ae3eeb690fcd37bca2bdc44-audit.json",
     "files": [
         {
-            "date": 1700827082933,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-24-11-17-error.log",
-            "hash": "075a3189fca04faf0a31a38da2e1964298bb749e220c8840796fd021dcb379ba"
+            "date": 1702428095034,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-13-12-06-error.log",
+            "hash": "d515ac1d4dcaac99bd9000712d78b7aa3d474afcf38ac414c06ec4d8310881e3"
         },
         {
-            "date": 1701050006023,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-27-11-07-error.log",
-            "hash": "2b7fcb49ae62c7afc998327dc48f4c3b3d4a3862d9c8401e3e2d683265e53003"
-        },
-        {
-            "date": 1701050424126,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-27-11-08-error.log",
-            "hash": "2b859ffabd998e0c54517c8f04d166e8184026da96100b1b491bb886f11d322f"
-        },
-        {
-            "date": 1701133371418,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-28-11-07-error.log",
-            "hash": "80bd7ed4373c510e03e31bfc5200259c18beb80ec7463c54a9713ac3d380345f"
-        },
-        {
-            "date": 1701137723478,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-28-11-08-error.log",
-            "hash": "3e1558627919de1d6660997e47f692207eab23851508e8fa3d4aa2cd9b750596"
+            "date": 1702429751413,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\errors\\phu-2023-13-12-07-error.log",
+            "hash": "cae86ae3e3303e702b205c211b5dfdf97fb27e2f509b4dc08dab3c24d2de267b"
         }
     ],
     "hashType": "sha256"

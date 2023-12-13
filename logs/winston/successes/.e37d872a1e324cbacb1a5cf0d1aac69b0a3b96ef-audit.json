@@ -6,29 +6,14 @@
     "auditLog": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\.e37d872a1e324cbacb1a5cf0d1aac69b0a3b96ef-audit.json",
     "files": [
         {
-            "date": 1700827082867,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-24-11-17-success.log",
-            "hash": "deac639e6468856598d59f36f7efb83bbd178b179322afa3626593c71ad99aa3"
+            "date": 1702428094858,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-13-12-06-success.log",
+            "hash": "bebc12decc5c48f60de1df2144dc217ee31b7f8dfc81ff11207fbe9a8996eeeb"
         },
         {
-            "date": 1701050005976,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-27-11-07-success.log",
-            "hash": "bfac0684b86d7b294e9b04cb89270d1927916d154820d0d5f28000e234fa9225"
-        },
-        {
-            "date": 1701050424109,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-27-11-08-success.log",
-            "hash": "20519709917f11729e13eab37d90b321049efccbb7d5a3c3351d8291a9eb4c21"
-        },
-        {
-            "date": 1701133371365,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-28-11-07-success.log",
-            "hash": "bb8cb8de1761c2de35e81657a5e41b1922422bfd24ab6cb6c807d2a547dca58d"
-        },
-        {
-            "date": 1701137723472,
-            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-28-11-08-success.log",
-            "hash": "c50db4566e40516eec04a0e07b76c61dd65503d6ba9c64b901d5a51b873eee33"
+            "date": 1702429751404,
+            "name": "D:\\Next_Level\\prisma\\university-management-core-service-starter\\logs\\winston\\successes\\phu-2023-13-12-07-success.log",
+            "hash": "9948c5319f8feb08a90891a6743b19b0f544ba935f1dc014cad1768924cfe88f"
         }
     ],
     "hashType": "sha256"
