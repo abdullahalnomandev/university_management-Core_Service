@@ -26,12 +26,19 @@ router.patch(
   SemesterRegistrationController.updateOneInDB
 );
 
-router.post('/enroll-into-course',
-auth(ENUM_USER_ROLE.STUDENT),
-SemesterRegistrationController.enrollIntoCourse)
+router.post(
+  '/enroll-into-course',
+  validateRequest(SemesterRegistrationValidation.entollOrWithdrawCourse),
+  auth(ENUM_USER_ROLE.STUDENT),
+  SemesterRegistrationController.enrollIntoCourse
+);
 
-router.post('/withdraw-from-course',
-auth(ENUM_USER_ROLE.STUDENT),
-SemesterRegistrationController.withdrawFromCourse)
+
+router.post(
+  '/withdraw-from-course',
+  validateRequest(SemesterRegistrationValidation.entollOrWithdrawCourse),
+  auth(ENUM_USER_ROLE.STUDENT),
+  SemesterRegistrationController.withdrawFromCourse
+);
 
 export const semesterRegistrationRoutes = router;
