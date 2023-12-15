@@ -108,6 +108,19 @@ const withdrawFromCourse = catchAsync(async (req: Request, res: Response) =>{
     });
 })
 
+const confirmMyRegistration = catchAsync(async (req: Request, res: Response) =>{
+
+    const user = (req as any).user
+
+    const result = await SemesterRegistrationService.confirmMyRegistration(user.userId)
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      status: 'success',
+      message: 'Confirm your registration',
+      data: result,
+    });
+})
+
 
 export const SemesterRegistrationController = {
   insertIntoDb,
@@ -117,5 +130,6 @@ export const SemesterRegistrationController = {
   updateOneInDB,
   startMyRegistration,
   enrollIntoCourse,
-  withdrawFromCourse
+  withdrawFromCourse,
+  confirmMyRegistration,
 };
