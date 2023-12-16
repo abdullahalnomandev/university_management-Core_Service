@@ -54,5 +54,11 @@ router.post(
 );
 
 
+router.post(
+  '/:id/start-new-semester',
+  SemesterRegistrationController.startNewSemester
+);
+
+
 
 export const semesterRegistrationRoutes = router;
