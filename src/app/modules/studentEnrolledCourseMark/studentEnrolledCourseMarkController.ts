@@ -13,9 +13,20 @@ const updateStudentMarks = catchAsync(async (req:Request,res:Response)=>{
         message:'Marks updated successfully',
         data:result
     })
+})
+
+const updateFinalMarks = catchAsync(async (req, res) =>{
+    const result = await StudentEnrolledCourseMarkService.updateFinalMarks(req.body)
+    sendResponse(res,{
+        statusCode:httpStatus.OK,
+        status:'success',
+        message:'Final marks updated!',
+        data:result
+    })
 
 })
 
 export const StudentEnrolledCourseMarkController ={
-    updateStudentMarks
+    updateStudentMarks,
+    updateFinalMarks
 }
