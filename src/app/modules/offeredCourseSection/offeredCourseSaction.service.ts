@@ -2,8 +2,12 @@ import { OfferedCourseSection } from '@prisma/client';
 import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
 import { prisma } from '../../../shared/prisma';
+import { asyncForEach } from '../../../shared/utils';
+import { OfferedCourseClassScheduleUtils } from './../offeredCourseClassSchedule/offeredCourseClasses.utils';
 
-const insertIntoDb = async (data: any): Promise<OfferedCourseSection> => {
+const insertIntoDb = async (payload: any): Promise<any> => {
+  const { classSchedules, ...data } = payload;
+
   const isExistOfferedCourse = await prisma.offeredCourse.findFirst({
     where: {
       id: data.offeredCourseId,
@@ -16,10 +20,34 @@ const insertIntoDb = async (data: any): Promise<OfferedCourseSection> => {
 
   data.semesterRegistrationId = isExistOfferedCourse.semesterRegistrationId;
 
-  return prisma.offeredCourseSection.create({
-    data,
-    include: { offeredCourse: true, semesterRegistration: true },
+  await asyncForEach(classSchedules, async (schedule: any) => {
+    await OfferedCourseClassScheduleUtils.checkRoomAvailable(schedule);
+    await OfferedCourseClassScheduleUtils.checkFacultyAvailabe(schedule);
   });
+
+  const createSection = await prisma.$transaction(async transactionClient => {
+    const createOfferedCourseSection =
+      await transactionClient.offeredCourseSection.create({
+        data,
+        include: { offeredCourse: true, semesterRegistration: true },
+      });
+
+    const scheduleData = classSchedules.map((schedule: any) => ({
+      startTime: schedule.startTime,
+      endTime: schedule.endTime,
+      dayOfWeek: schedule.dayOfWeek,
+      roomId: schedule.roomId,
+      facultyId: schedule.facultyId,
+      offeredCourseSection: createOfferedCourseSection.id,
+      semesterRegistrationid: isExistOfferedCourse.semesterRegistrationId,
+    }));
+
+    const createSchedule = await transactionClient.offeredCourseClassSchedule.createMany({
+        data: scheduleData,
+      });
+    return createSchedule;
+  });
+console.log(createSection);
 };
 
 const getAllFromDb = async (): Promise<OfferedCourseSection[]> => {
@@ -29,14 +57,16 @@ const getAllFromDb = async (): Promise<OfferedCourseSection[]> => {
       semesterRegistration: true,
     },
   });
-  
+
   return result;
 };
 
-const getSingleOneFromDB = async (id:string): Promise<OfferedCourseSection | null> => {
+const getSingleOneFromDB = async (
+  id: string
+): Promise<OfferedCourseSection | null> => {
   const result = prisma.offeredCourseSection.findUnique({
-    where:{
-      id
+    where: {
+      id,
     },
     include: {
       offeredCourse: true,
@@ -45,10 +75,12 @@ const getSingleOneFromDB = async (id:string): Promise<OfferedCourseSection | nul
   });
   return result;
 };
-const deleteFromDb = async (id:string): Promise<OfferedCourseSection | null> => {
+const deleteFromDb = async (
+  id: string
+): Promise<OfferedCourseSection | null> => {
   const result = prisma.offeredCourseSection.delete({
-    where:{
-      id
+    where: {
+      id,
     },
     include: {
       offeredCourse: true,
@@ -57,11 +89,10 @@ const deleteFromDb = async (id:string): Promise<OfferedCourseSection | null> => 
   });
   return result;
 };
-
 
 export const OfferedCourseSectionService = {
   insertIntoDb,
   getAllFromDb,
   getSingleOneFromDB,
-  deleteFromDb
+  deleteFromDb,
 };

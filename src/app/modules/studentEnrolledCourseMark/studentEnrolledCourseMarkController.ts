@@ -23,7 +23,6 @@ const updateFinalMarks = catchAsync(async (req, res) =>{
         message:'Final marks updated!',
         data:result
     })
-
 })
 
 export const StudentEnrolledCourseMarkController ={
