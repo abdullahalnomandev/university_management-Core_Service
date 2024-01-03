@@ -1,4 +1,6 @@
 import express from 'express';
+import { ENUM_USER_ROLE } from '../../../enums/user';
+import auth from '../../middlewares/auth';
 import validateRequest from '../../middlewares/validateRequest';
 import { StudentController } from './student.controller';
 import { StudentValidation } from './student.valildation';
@@ -12,8 +14,19 @@ router.post(
   StudentController.insertIntoDB
 );
 router.get('/', StudentController.getAllFromDB);
+
+router.get(
+  '/my-courses',
+  auth(ENUM_USER_ROLE.STUDENT),
+  StudentController.myCourses
+);
+
 router.get('/:id', StudentController.getDataById);
-router.patch('/:id', validateRequest(StudentValidation.update), StudentController.updateIntoDB);
+router.patch(
+  '/:id',
+  validateRequest(StudentValidation.update),
+  StudentController.updateIntoDB
+);
 router.patch('/:id', StudentController.deletFromDB);
 
 export const StudentRoutes = router;
