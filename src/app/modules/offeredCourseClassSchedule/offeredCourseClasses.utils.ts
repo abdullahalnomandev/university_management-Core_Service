@@ -60,7 +60,6 @@ const checkFacultyAvailabe = async (data: OfferedCourseClassSchedule) => {
   if (hasTimeConflict(existingSlots, newSlot)) {
     throw new ApiError(httpStatus.CONFLICT, 'Faculty is already booked');
   }
-    console.log(alreadyFacultyAssigned);
 };
 
 export const OfferedCourseClassScheduleUtils = {

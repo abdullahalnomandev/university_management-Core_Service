@@ -151,8 +151,6 @@ const updateOneInDB = async (
   id: string,
   payload: Partial<SemesterRegistration>
 ): Promise<SemesterRegistration> => {
-  console.log(payload.status);
-
   const isExist = await prisma.semesterRegistration.findUnique({
     where: {
       id,
