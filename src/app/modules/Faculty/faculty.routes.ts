@@ -12,7 +12,13 @@ router.post(
   validateRequest(FacultyValidation.create),
   FacultyController.insertIntoDB
 );
-router.get('/', FacultyController.getAllFromDB);
+router.get(
+  '/my-courses',
+  auth(ENUM_USER_ROLE.FACULTY),
+  FacultyController.myCourses
+  );
+  router.get('/', FacultyController.getAllFromDB);
+
 router.get('/:id', FacultyController.getDataById);
 router.post(
   '/:id/assign-courses',
