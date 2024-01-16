@@ -19,6 +19,10 @@ router.post(
   SemesterRegistrationController.insertIntoDb
 );
 router.get('/', SemesterRegistrationController.getAllFromDB);
+router.get('/get-my-semester-courses',
+auth(ENUM_USER_ROLE.STUDENT),
+ SemesterRegistrationController.getMySemesterCourses);
+
 router.get('/:id', SemesterRegistrationController.getSingleFromDb);
 router.delete('/:id', SemesterRegistrationController.deleteByIdFromDB);
 
