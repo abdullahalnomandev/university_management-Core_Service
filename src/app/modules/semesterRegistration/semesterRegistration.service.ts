@@ -27,6 +27,7 @@ import {
   IEnrollCoursePayload,
   ISemesterRegistrationFilterRequest,
 } from './semesterRegistration.interface';
+import { SemesterRegistrationUtils } from './semesterRegistration.utils';
 
 const insertIntoDb = async (
   data: SemesterRegistration
@@ -584,11 +585,7 @@ const getMySemesterRegCourses = async (authUser: string) => {
       offeredCourse:true
     }
   })
-  console.log(
-    'studentCompleted',
-    studentCompletedCourse,
-    studentCurrentSemesterTakenCourse
-  );
+  console.log('studentCompleted', studentCompletedCourse,);
 
   const offeredCourse = await prisma.offeredCourse.findMany({
     where:{
@@ -624,7 +621,8 @@ const getMySemesterRegCourses = async (authUser: string) => {
       }
     }
   })
-  console.log('offeredCours',offeredCourse);
+  const availableCourses =SemesterRegistrationUtils.getAvailableCourses(offeredCourse,studentCompletedCourse,studentCurrentSemesterTakenCourse)
+  return availableCourses;
 };
 export const SemesterRegistrationService = {
   insertIntoDb,
