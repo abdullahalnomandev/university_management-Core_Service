@@ -156,6 +156,7 @@ const getMySemesterCourses = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+
 export const SemesterRegistrationController = {
   insertIntoDb,
   getSingleFromDb,

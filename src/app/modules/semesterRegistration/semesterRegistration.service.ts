@@ -624,6 +624,8 @@ const getMySemesterRegCourses = async (authUser: string) => {
   const availableCourses =SemesterRegistrationUtils.getAvailableCourses(offeredCourse,studentCompletedCourse,studentCurrentSemesterTakenCourse)
   return availableCourses;
 };
+
+
 export const SemesterRegistrationService = {
   insertIntoDb,
   getSingleFromDb,
