@@ -40,6 +40,7 @@ const groupByAcademicSemester = (data: any) => {
   return groupData;
 };
 
+
 export const StudentUtils = {
   groupByAcademicSemester,
 };
