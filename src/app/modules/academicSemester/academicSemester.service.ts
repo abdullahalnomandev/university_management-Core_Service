@@ -5,7 +5,7 @@ import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import { prisma } from '../../../shared/prisma';
 import { RedisClient } from '../../../shared/redis';
-import { AcademicSemesterSearchAbleFields, EVENT_ACADEMIC_SEMESTER_CREATED, EVENT_ACADEMIC_SEMESTER_UPDATED, academicSemesterTitleCodeMapper } from './academicSemester.constant';
+import { AcademicSemesterSearchAbleFields, EVENT_ACADEMIC_SEMESTER_CREATED, EVENT_ACADEMIC_SEMESTER_DELETED, EVENT_ACADEMIC_SEMESTER_UPDATED, academicSemesterTitleCodeMapper } from './academicSemester.constant';
 import { IAcademicSemesterFilterRequest } from './academicSemester.interface';
 
 
@@ -103,9 +103,28 @@ const updateOneInDB = async (
   
 };
 
+const deleteById = async (
+  id: string,
+): Promise<AcademicSemester> => {
+  
+  const result = await prisma.academicSemester.delete({
+    where:{
+      id
+    }
+  })
+
+  if(result){
+    await RedisClient.publish(EVENT_ACADEMIC_SEMESTER_DELETED,JSON.stringify(result));
+  }
+
+  return result;
+  
+};
+
 export const AcademicSemesterService = {
   insertIntoDB,
   getAllFromDB,
   getDataById,
   updateOneInDB,
+  deleteById
 };
