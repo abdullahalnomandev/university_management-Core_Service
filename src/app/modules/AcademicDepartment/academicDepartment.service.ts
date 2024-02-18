@@ -3,27 +3,33 @@ import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import { prisma } from '../../../shared/prisma';
-import { AcademicDepartmentFilterAbleFields } from './academicFaculty.constant';
+import { RedisClient } from '../../../shared/redis';
+import { AcademicDepartmentFilterAbleFields, EVENT_ACADEMIC_DEPARTMENT_CREATED } from './academicFaculty.constant';
 import { IAcademicDepartmentFilterRequest } from './academicFaculty.interface';
-
 
 const insertIntoDB = async (
   data: AcademicDepartment
 ): Promise<AcademicDepartment> => {
-  return await prisma.academicDepartment.create({ data 
-  ,include:{
-    academicFaculty:true
+  const result = await prisma.academicDepartment.create({
+    data,
+    include: {
+      academicFaculty: true,
+    },
+  });
+
+  if(result){
+    await RedisClient.publish(EVENT_ACADEMIC_DEPARTMENT_CREATED,JSON.stringify(result));
   }
-  } );
+  return result;
 };
 
 const getAllFromDB = async (
-  filters:  IAcademicDepartmentFilterRequest,
+  filters: IAcademicDepartmentFilterRequest,
   options: IPaginationOptions
 ): Promise<IGenericResponse<AcademicDepartment[]>> => {
-
   const { searchTerm, ...filterData } = filters;
-  const { page, limit, skip ,sortOrder,sortBy } = paginationHelpers.calculatePagination(options);
+  const { page, limit, skip, sortOrder, sortBy } =
+    paginationHelpers.calculatePagination(options);
 
   const andConditions = [];
 
@@ -32,24 +38,24 @@ const getAllFromDB = async (
       OR: AcademicDepartmentFilterAbleFields.map(field => ({
         [field]: {
           contains: searchTerm,
-          mode: 'insensitive'
-        }
+          mode: 'insensitive',
+        },
       })),
     });
   }
 
-  if(Object.keys(filterData).length > 0){
+  if (Object.keys(filterData).length > 0) {
     andConditions.push({
-      AND: Object.keys(filterData).map((key) => ({
+      AND: Object.keys(filterData).map(key => ({
         [key]: {
-          equals:(filterData as any )[key]
-        }
-      }))
+          equals: (filterData as any)[key],
+        },
+      })),
     });
   }
 
-
-  const whereConditions:Prisma.AcademicDepartmentWhereInput = andConditions.length > 0 ? {AND:andConditions} :{}
+  const whereConditions: Prisma.AcademicDepartmentWhereInput =
+    andConditions.length > 0 ? { AND: andConditions } : {};
   const result = await prisma.academicDepartment.findMany({
     where: whereConditions,
     skip,
@@ -61,12 +67,12 @@ const getAllFromDB = async (
           }
         : { createdAt: 'asc' },
     include: {
-      academicFaculty:true
+      academicFaculty: true,
     },
   });
 
   const total = await prisma.academicDepartment.count();
-  
+
   return {
     meta: {
       total,
@@ -77,14 +83,12 @@ const getAllFromDB = async (
   };
 };
 
-const getDataById = async (id: string): Promise<AcademicDepartment | null> =>{
-   return await prisma.academicDepartment.findUnique({where:{id}})
-}
-
-
+const getDataById = async (id: string): Promise<AcademicDepartment | null> => {
+  return await prisma.academicDepartment.findUnique({ where: { id } });
+};
 
 export const AcademicDepartmentService = {
   insertIntoDB,
   getAllFromDB,
-  getDataById
+  getDataById,
 };
