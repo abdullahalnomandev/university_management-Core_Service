@@ -74,10 +74,10 @@ const getAllFromDB = async (
 
   const result = await prisma.offeredCourseClassSchedule.findMany({
     include: {
-      facylty: true,
       semesterRegistration: true,
       room: true,
       offeredCourseSection: true,
+      facylty:true
     },
     where: whereConditions,
     skip,
