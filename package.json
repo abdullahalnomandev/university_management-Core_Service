@@ -35,6 +35,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/cookie-parser": "^1.4.3",
     "@types/jsonwebtoken": "^9.0.2",
+    "axios": "^1.6.7",
     "bcrypt": "^5.1.0",
     "colors": "^1.4.0",
     "colorts": "^0.1.63",
