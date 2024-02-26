@@ -1,0 +1,15 @@
+Tue Feb 27 2024 0:7:8 } [PH] error: 
+Invalid `prisma.student.create()` invocation:
+
+
+Foreign key constraint failed on the field: `students_academicSemesterId_fkey (index)`
+Tue Feb 27 2024 0:10:38 } [PH] error: 
+Invalid `prisma.student.create()` invocation:
+
+
+Foreign key constraint failed on the field: `students_academicSemesterId_fkey (index)`
+Tue Feb 27 2024 0:20:55 } [PH] error: 
+Invalid `prisma.student.create()` invocation:
+
+
+Foreign key constraint failed on the field: `students_academicDepartmentId_fkey (index)`

@@ -1,0 +1,52 @@
+Mon Feb 26 2024 23:51:18 } [PH] error: 
+Invalid `prisma.student.create()` invocation:
+
+{
+  data: {
+    studentId: "230300001",
+    firstName: "Abdullah",
+    middleName: "Noman",
+    lastName: "AL",
+    email: "risa@gmail.com",
+    contactNo: "01748s112",
+    gender: "female",
+    bloodGroup: "O+",
+    academicFacultyId: "97766901-c75d-4543-ac65-703f401582e4",
+    academicDepartmentId: "97766901-c75d-4543-ac65-703f401582e4",
+    academicSemesterId: "97766901-c75d-4543-ac65-703f401582e4",
++   profileImage: String
+  },
+  include: {
+    academicSemester: true,
+    academicFaculty: true,
+    acadeicDepartment: true
+  }
+}
+
+Argument `profileImage` is missing.
+Mon Feb 26 2024 23:53:33 } [PH] error: 
+Invalid `prisma.student.create()` invocation:
+
+{
+  data: {
+    studentId: "230300001",
+    firstName: "Abdullah",
+    middleName: "Noman",
+    lastName: "AL",
+    email: "risa@gmail.com",
+    contactNo: "01748s112",
+    gender: "female",
+    bloodGroup: "O+",
+    academicFacultyId: "97766901-c75d-4543-ac65-703f401582e4",
+    academicDepartmentId: "97766901-c75d-4543-ac65-703f401582e4",
+    academicSemesterId: "97766901-c75d-4543-ac65-703f401582e4",
++   profileImage: String
+  },
+  include: {
+    academicSemester: true,
+    academicFaculty: true,
+    acadeicDepartment: true
+  }
+}
+
+Argument `profileImage` is missing.

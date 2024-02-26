@@ -19,3 +19,4 @@ export const studentSearchableFields: string[] = [
   'contactNo',
   'studentId',
 ];
+export const EVENT_STUDENT_CREATED = 'student-created';

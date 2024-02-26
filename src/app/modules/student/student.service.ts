@@ -225,12 +225,32 @@ const getMyAcademicInfo = async (authUserId:string):Promise<any> =>{
     }
   })
 
- console.log('enrollment',enrolledCourses);
  const groupByAcademicSemesterData = StudentUtils.groupByAcademicSemester(enrolledCourses)
  return {
   academicInfo,
   courses:groupByAcademicSemesterData
  }
+}
+
+const createStudentFromEvent = async (e:any):Promise<void> =>{
+  console.log('academicFacultyId',e.academicFaculty.syncId,);
+  console.log('academicDepartmentId',e.academicDepartment.syncId,);
+  console.log('academicSemesterId',e.academicSemester.syncId);
+  const studentData:Partial<Student> = {
+    studentId:e.id,
+    firstName:e.name.firstName,
+    middleName:e.name.middleName,
+    lastName:e.name.lastName,
+    email:e.email,
+    contactNo:e.contactNo,
+    gender:e.gender,
+    bloodGroup:e.bloodGroup,
+    academicFacultyId:e.academicFaculty.syncId,
+    academicDepartmentId:e.academicDepartment.syncId,
+    academicSemesterId:e.academicSemester.syncId
+  }
+
+  await insertIntoDB(studentData as Student)
 }
 export const StudentService = {
   insertIntoDB,
@@ -240,5 +260,6 @@ export const StudentService = {
   deleteFromDB,
   myCourses,
   getMyCourseSchedules,
-  getMyAcademicInfo
+  getMyAcademicInfo,
+  createStudentFromEvent
 };
