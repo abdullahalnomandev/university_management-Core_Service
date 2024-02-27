@@ -8,7 +8,6 @@ const initStudentEvents = async () =>{
 
         await StudentService.createStudentFromEvent(data)
 
-        console.log('data',data);
     })
 }
 
