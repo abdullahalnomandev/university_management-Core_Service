@@ -1,0 +1,62 @@
+Wed Feb 28 2024 15:54:25 } [PH] error: 
+Invalid `prisma.faculty.findFirst()` invocation:
+
+
+Can't reach database server at `localhost`:`5432`
+
+Please make sure your database server is running at `localhost`:`5432`.
+Wed Feb 28 2024 15:55:47 } [PH] error: 
+Invalid `prisma.faculty.create()` invocation:
+
+{
+  data: {
+    facultyId: "F-00001",
+    firstName: "ESHA",
+    lastName: "BUNNY",
+    middleName: "Noman",
+    email: "esha@gmail.com",
+    contactNo: "01964202827",
+    gender: "male",
+    bloodGroup: "A+",
+    designation: "Lecturer",
+    academicDepartmentId: undefined,
+    academicFacultyId: undefined,
++   profileImage: String
+  },
+  include: {
+    acadeimcFaculty: true,
+    academicDepartment: true
+  }
+}
+
+Argument `profileImage` is missing.
+Wed Feb 28 2024 15:59:8 } [PH] error: 
+Invalid `prisma.faculty.create()` invocation:
+
+{
+  data: {
+    facultyId: "F-00001",
+    firstName: "ESHA",
+    lastName: "BUNNY",
+    middleName: "Noman",
+    profileImage: "",
+    email: "esha@gmail.com",
+    contactNo: "01964202827",
+    gender: "male",
+    bloodGroup: "A+",
+    designation: "Lecturer",
+    academicDepartmentId: undefined,
+    academicFacultyId: undefined,
++   academicDepartment: {
++     create: AcademicDepartmentCreateWithoutFacultiesInput | AcademicDepartmentUncheckedCreateWithoutFacultiesInput,
++     connectOrCreate: AcademicDepartmentCreateOrConnectWithoutFacultiesInput,
++     connect: AcademicDepartmentWhereUniqueInput
++   }
+  },
+  include: {
+    acadeimcFaculty: true,
+    academicDepartment: true
+  }
+}
+
+Argument `academicDepartment` is missing.
